@@ -2,7 +2,7 @@
   "name": "reactfr",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://celianon.github.io/repository-name",
+  "homepage":"https://celianon.github.io/simple-react-spa",
   "dependencies": {
     "@material-ui/core": "^4.2.0",
     "final-form": "^4.16.2",
