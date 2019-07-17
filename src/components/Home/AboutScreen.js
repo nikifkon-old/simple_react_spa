@@ -11,10 +11,12 @@ const AboutScreenContainer = styled(Grid)`
     min-height: 100vh
 `
 const PeopleImg = styled.img`
-    height: 80vh
+    width: 40%
+    height: auto
 `
 const ScoreImg = styled.img`
-    width: 50vh
+    width: 80%
+    height: auto
 `
 const AboutScreen = () => {
     return (

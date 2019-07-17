@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react'
 import { Dialog, 
-    DialogTitle, 
-    DialogContent, 
-    DialogActions, 
-    DialogContentText,
+    DialogTitle,  
+    DialogActions,
     Button } from '@material-ui/core'
+import styled from 'styled-components'
 
+const EmailDialog = styled(Dialog)`
+  width: 100%  
+`
 const FirstScreen = ({email, open, setDialogOpen}) => {
     const handleClose = (subscribe) => {
         setDialogOpen(!open)
@@ -14,7 +16,7 @@ const FirstScreen = ({email, open, setDialogOpen}) => {
 
     return (
         <Fragment>
-            <Dialog
+            <EmailDialog
               open={open}
               onClose={handleClose}
             >
@@ -27,7 +29,7 @@ const FirstScreen = ({email, open, setDialogOpen}) => {
                 Yes
               </Button>
             </DialogActions>
-            </Dialog>
+            </EmailDialog>
         </Fragment>
     )
 }

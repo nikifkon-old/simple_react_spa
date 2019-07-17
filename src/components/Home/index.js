@@ -4,7 +4,6 @@ import React, { Fragment } from 'react'
 import FirstScreen from './FirstScreen'
 import SecondScreen from './SecondScreen'
 import AboutScreen from './AboutScreen';
-import Footer from './Footer';
 
 const Home = () => {
     return (
@@ -12,7 +11,6 @@ const Home = () => {
             <FirstScreen />
             <SecondScreen />
             <AboutScreen />
-            <Footer />
         </Fragment>
     )
 }

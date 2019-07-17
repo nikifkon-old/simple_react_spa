@@ -1,5 +1,5 @@
 import styled, { css, createGlobalStyle } from 'styled-components'
-import { Grid, TextField } from '@material-ui/core'
+import { Grid, TextField, } from '@material-ui/core'
 import { createMuiTheme } from '@material-ui/core/styles';
 import React from 'react'
 
@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         margin: 0
         padding: 0
+        margin-top: 60px
     }
     a {
         text-decoration: none
@@ -37,49 +38,48 @@ export const GlobalStyle = createGlobalStyle`
     }
 `
 export const MultiTheme = createMuiTheme( {
-    overrides: {
-        // Inputs
-        MuiInputBase: {
-            input: {
-                borderRadius: "20px"
-            }
-        },
-        MuiFormControl: {
-            root:{
-                margin: '1rem',
-                background: "#eee",
-                borderRadius: "20px",
-                width: "300px",
-            }
-        },
+    overrides: {        
         PrivateNotchedOutline: {
             root: {
-                borderRadius: '20px'
+                borderRadius: "20px",
+            }
+        },   
+        MuiOutlinedInput: {
+            root: {                
+                margin: '1rem 0',
+                background: "#eee",
+                borderRadius: "20px",
+                width: "270px",
+            },
+            input: {
+                borderRadius: "20px",
             }
         },
-        // Submit icon on Email form
-        MuiIconButton: {
+        MuiFilledInput: {
             root: {
-                position: "absolute"
+                margin: ".5rem",
+                width: "100%"
             }
         }
     }
 })
-
 export const Label = styled.p`
     color: ${props => props.color || '#000'}
     font-size: ${props => props.fontSize || '1rem'}
-    margin-left: 1rem
+    margin: 0 1rem
     text-align: center
-    font-weight: ${props => props.fontWeight || 'none'}
-    ${props => props.color == 'primary' && css`
+    font-weight: ${props => props.fontWeight || 'normal'}
+    ${props => props.color === 'primary' && css`
         color: ${primary}
     `}
 `
-export const FinalFormTextField = ({input, variant, placeholder, meta, ...rest}) => {
+export const FinalFormTextField = ({input, value, onChange, variant, placeholder, meta, ...rest}) => {
     return (
     <TextField
+      value={value}
+      onChange={onChange}
       variant={variant}
+      fullWidth
       placeholder={placeholder}
       helperText={meta.touched ? meta.error : undefined}
       error={meta.error && meta.touched}
@@ -87,15 +87,25 @@ export const FinalFormTextField = ({input, variant, placeholder, meta, ...rest})
       {...rest}
     />
 )}
-export const Button = styled.button`
-    background: transparent
-    padding: 3px
-    color: palevioletred
-    
-    ${props => props.primary && css`
-        background: palevioletred
-        color: #fff
-    `}
+
+export const StyledForm = styled.form`
+  flex: 1
+  position: relative
+  flex-direction: column
+  justify-content: flex-start
+  align-items: center
+  width: ${props => props.width && props.width}
+`
+
+export const HeaderContainer = styled(Grid)`
+    position: fixed
+    top: 0
+    background: #51509c
+    z-index: 999
+    min-height: 60px
+`
+export const HeaderLabel = styled(Label)`
+    margin: 1rem 4rem
 `
 
 export const SectionContainer = styled(Grid)`

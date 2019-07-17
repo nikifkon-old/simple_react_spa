@@ -13,7 +13,7 @@ const ItemCard = () => {
         <Fragment>
             <Paper>
                 <ItemGrid container direction="column" alignItems="center">
-                    <img src={Item1} width={150}/>
+                    <img src={Item1} width={150} alt="item"/>
                     <Label>Lorem ipsum</Label>
                     <Label fontWeight="bold">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo</Label>
                 </ItemGrid>

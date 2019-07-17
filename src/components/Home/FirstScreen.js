@@ -2,8 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { Grid, IconButton, } from '@material-ui/core'
 import { Label, FinalFormTextField, primary } from '../../styles'
 
-import styled from 'styled-components';
-import Header from './Header'
+import styled, { css } from 'styled-components';
 import ArrowForward from '../../assets/arrow-right.svg'
 import NotepadSVG from '../../assets/Notepad.svg'
 
@@ -18,10 +17,15 @@ const FirstScreenContainer = styled(Grid)`
 const EmailForm = styled.form`
     position: relative
     animation: left_appear 0.5s ease-in-out 0s  alternate forwards
+    ${css`
+        .MuiFormControl-root .MuiFormHelperText-root{
+            color: white
+        }
+    `}
 `
 const SubmitButton = styled(IconButton)`
-    position: absolute
-    right: 5%
+    position: absolute !important
+    right: 0
     top: 20%
 `
 const AnimateLabel = styled(Label)`
@@ -36,15 +40,24 @@ const FirstScreen = () => {
     const [Email, setEmail] = useState()
     const [DialogOpen, setDialogOpen] = useState(false)
 
+    const emailValidate = values => {
+        const errors = {}
+        if ( !values.email ) {
+            errors.email = "Email is required"
+        }
+        return errors
+    }
+
     const onSubmit = values => {
         setEmail(values["email"])
         setDialogOpen(true)
     }
+
     return (
         <Fragment>
             <EmailDialog email={Email} open={DialogOpen} setDialogOpen={setDialogOpen}/>
             <FirstScreenContainer container direction='row'>
-                <Header />
+                {/*<Header />*/}
                 <Grid container
                  item lg={12} 
                  md={12} 
@@ -65,6 +78,7 @@ const FirstScreen = () => {
                         </AnimateLabel>
                         <Form 
                             onSubmit={onSubmit}
+                            validate={emailValidate}
                             render={ ({handleSubmit}) => (
                                 <EmailForm onSubmit={handleSubmit}>
                                     <Field 

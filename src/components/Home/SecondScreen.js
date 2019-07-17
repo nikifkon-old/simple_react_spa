@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Grid } from '@material-ui/core';
 import styled from 'styled-components'
 import { Label } from '../../styles';
@@ -13,9 +13,30 @@ const ItemsContainer = styled(Grid)`
     background: #eee
 `
 const SecondScreen = () => {
+//     const handleScroll = (event) => {            
+
+//         let element = document.getElementById('SecondScreen')
+//         console.log(window.scrollY)
+//         // console.log(window)
+//         console.log(element.scrollHeight)
+//         console.log(element.scrollTop)
+//         console.log(element.offsetHeight)
+//         if( window.scrollY > 0 & window.scrollY <= element.scrollHeight ){
+//             console.log('------------------------')
+//         }
+//     }
+
+
+//     useEffect(() => {
+//         document.addEventListener('scroll', handleScroll)
+
+//         return function cleanup() {
+//             document.removeEventListener('scroll', handleScroll)}
+//     })
+
     return (
         <Fragment>
-            <SecondScreenContainer container direction="row" alignItems="center" justify="center">
+            <SecondScreenContainer id="SecondScreen" container direction="row" alignItems="center" justify="center">
                 <Grid item >
                     <Label fontSize="2rem" >
                         The first 3 Video are FREE
