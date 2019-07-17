@@ -19,7 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b master -d build",
     "cypress": "./node_modules/.bin/cypress open",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
