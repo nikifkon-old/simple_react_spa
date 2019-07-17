@@ -1,7 +1,6 @@
 {
   "name": "reactfr",
   "version": "0.1.0",
-  "private": true,
   "homepage": "https://celianon.github.io/",
   "dependencies": {
     "@material-ui/core": "^4.2.0",
@@ -19,6 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "cypress": "./node_modules/.bin/cypress open",
     "test": "react-scripts test",
