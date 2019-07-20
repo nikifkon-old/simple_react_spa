@@ -95,6 +95,10 @@ export const StyledForm = styled.form`
   justify-content: flex-start
   align-items: center
   width: ${props => props.width && props.width}
+  
+  @media (max-width: 500px){
+    width: 300px
+  }
 `
 
 export const HeaderContainer = styled(Grid)`

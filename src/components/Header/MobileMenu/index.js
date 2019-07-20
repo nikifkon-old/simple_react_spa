@@ -52,7 +52,7 @@ const MobileMenu = () => {
                 </IconButton>
             </HeaderContainer>
             <HamburgerBox isOpen={isOpen}>
-                <HamburgerLink to="about">About</HamburgerLink>
+                <HamburgerLink to="/about">About</HamburgerLink>
                 <HamburgerLink to="/dictionary">Dictionary</HamburgerLink>
                 <HamburgerLink to="/FAQ">FAQ</HamburgerLink>
                 <HamburgerLink to="/cookie">Cookies</HamburgerLink>

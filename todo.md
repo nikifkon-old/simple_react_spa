@@ -16,3 +16,4 @@
 - [?] share form
 - [ ] form validate
 - [ ] waiting animate 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT3INLURhcUCNxm7i__S_uTnUf-pLQfpY"></script>

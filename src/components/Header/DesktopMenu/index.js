@@ -8,7 +8,7 @@ const DesktopMenu = () => {
             <Link to="/">
                 <HeaderLabel color='white'>React</HeaderLabel>
             </Link>
-            <Link to="about">
+            <Link to="/about">
                 <HeaderLabel color='white'>About</HeaderLabel>
             </Link>
         </HeaderContainer>

@@ -1,30 +1,16 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import { Form, Field } from 'react-final-form' 
 import { MenuItem } from '@material-ui/core'
 import { FinalFormTextField, StyledForm } from '../../styles'
 
-import { AppContext } from '../Reducer/'
 import Navigation from './Navigation'
 
 const genderValues = [
   'Not Chosen', 'Men', 'Women'
 ]
 // Second Form
-const PersonalInfoForm = () => {
-    const { state, dispatch } = useContext(AppContext)
+const PersonalInfoForm = ({ data, handlePersonalInfoForm, decrementFormProgress, formProgress }) => {
 
-    const PersonalFormHandler = (values) => {
-      dispatch({
-        type: "PersonalInfo",
-        payload: {
-          fullName: values.fullName,
-          gender: values.gender,
-          address: values.address,
-          postIndex: values.postIndex,
-          creditCard: values.creditCard
-        }
-      })
-    }
     // Validate 
     const composeValidators = (...validators) => value =>
       validators.reduce((error, validator) => error || validator(value), undefined)
@@ -40,7 +26,7 @@ const PersonalInfoForm = () => {
     return (
         <Fragment>
             <Form
-              onSubmit={PersonalFormHandler} 
+              onSubmit={handlePersonalInfoForm} 
               render={({handleSubmit}) => (
                 <StyledForm
                   width="400px"
@@ -54,7 +40,7 @@ const PersonalInfoForm = () => {
                     label="Full Name"
                     margin="normal"
                     variant="filled"
-                    defaultValue={state.fullName}
+                    defaultValue={data.fullName}
                     component={FinalFormTextField}/>
 
                   <Field 
@@ -64,7 +50,7 @@ const PersonalInfoForm = () => {
                     variant="filled"
                     label="Gender"
                     name="gender"
-                    defaultValue={state.gender}
+                    defaultValue={data.gender}
                     component={FinalFormTextField}
                   >
                     {genderValues.map(option => (
@@ -82,7 +68,7 @@ const PersonalInfoForm = () => {
                     label="Address"
                     margin="normal"
                     variant="filled"
-                    defaultValue={state.address}
+                    defaultValue={data.address}
                     component={FinalFormTextField}
                   />
                   <Field
@@ -92,7 +78,7 @@ const PersonalInfoForm = () => {
                     label="Post Index"
                     margin="normal"
                     variant="filled"
-                    defaultValue={state.postIndex}
+                    defaultValue={data.postIndex}
                     component={FinalFormTextField}
                   />
                   <Field
@@ -102,10 +88,13 @@ const PersonalInfoForm = () => {
                     label="Credit Card"
                     margin="normal"
                     variant="filled"
-                    defaultValue={state.creditCard}
+                    defaultValue={data.creditCard}
                     component={FinalFormTextField}
                   />
-                  <Navigation />
+                  <Navigation 
+                    decrementFormProgress={decrementFormProgress} 
+                    formProgress={formProgress}
+                  />
                 </StyledForm>
               )}
             />

@@ -1,23 +1,12 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import { Form, Field } from 'react-final-form' 
 import { FinalFormTextField, StyledForm } from '../../styles'
 
-import { AppContext } from '../Reducer/'
 import Navigation from './Navigation'
 
 // First Form
-const EntryForm = () => {
-    const { state, dispatch } = useContext(AppContext)
-    const EntryFormHandler = (values) => {
-      dispatch({
-        type: "ENTRY",
-        payload: {
-          nickname: values.nickname,
-          email: values.email,
-          tel: values.tel,
-        }
-      })
-    }
+const EntryForm = ({ data, handleEntryForm, decrementFormProgress, formProgress }) => {
+    
     // Validate
     const composeValidators = (...validators) => value =>
       validators.reduce((error, validator) => error || validator(value), undefined)
@@ -34,46 +23,49 @@ const EntryForm = () => {
 
     return (
         <Fragment>
-            <Form
-              onSubmit={EntryFormHandler}
-              render={({handleSubmit}) => (
-                <StyledForm
-                  width="400px"
-                  onSubmit={handleSubmit}
-                >
-                  <Field 
-                    validate={required}
-                    type="text"
-                    name="nickname"
-                    label="Nickname"
-                    margin="normal"
-                    variant="filled"
-                    defaultValue={state.nickname}
-                    component={FinalFormTextField}/>
-                  <Field 
-                    validate={composeValidators(required, email)}
-                    type="email"
-                    name="email"
-                    label="Email"
-                    margin="normal"
-                    variant="filled"
-                    defaultValue={state.email}
-                    component={FinalFormTextField}/>
-                  <Field
-                    validate={composeValidators(required, isNumner, tel)}
-                    type="tel"
-                    name="tel"
-                    label="Telephone"
-                    margin="normal"
-                    variant="filled"
-                    defaultValue={state.tel}
-                    component={FinalFormTextField}
-                  />
-                  <Navigation />
-                </StyledForm>
-              )}
-            />
-        </Fragment>
+          <Form
+            onSubmit={handleEntryForm}
+            render={({handleSubmit}) => (
+              <StyledForm
+                width="400px"
+                onSubmit={handleSubmit}
+              >
+                <Field 
+                  validate={required}
+                  type="text"
+                  name="nickname"
+                  label="Nickname"
+                  margin="normal"
+                  variant="filled"
+                  defaultValue={data.nickname}
+                  component={FinalFormTextField}/>
+                <Field 
+                  validate={composeValidators(required, email)}
+                  type="email"
+                  name="email"
+                  label="Email"
+                  margin="normal"
+                  variant="filled"
+                  defaultValue={data.email}
+                  component={FinalFormTextField}/>
+                <Field
+                  validate={composeValidators(required, isNumner, tel)}
+                  type="tel"
+                  name="tel"
+                  label="Telephone"
+                  margin="normal"
+                  variant="filled"
+                  defaultValue={data.tel}
+                  component={FinalFormTextField}
+                />
+                <Navigation 
+                  decrementFormProgress={decrementFormProgress} 
+                  formProgress={formProgress}
+                />
+              </StyledForm>
+            )}
+          />
+      </Fragment>
     )
 }
 

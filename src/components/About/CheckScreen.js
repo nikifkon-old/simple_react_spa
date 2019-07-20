@@ -1,30 +1,28 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { Grid, Table, TableBody, TableCell, TableRow } from '@material-ui/core'
 import { Label } from '../../styles'
 
-import { AppContext } from '../Reducer/'
 import Navigation from './Navigation'
 
 const CheckScreenStyled = styled(Grid)`
 `
 // User checks details
-const CheckScreen = () => {
-    const { state, dispatch } = useContext(AppContext)
+const CheckScreen = ({ decrementFormProgress, data, formProgress, applyForm }) => {
 
     const createData = (name, value) => {
       return { name, value };
     }
     // Check Screen Data for Table
     const rows = [
-      createData('Nickname', state.nickname),
-      createData('Email', state.email),
-      createData('Telephone', state.tel),
-      createData('Full Name', state.fullName),
-      createData('Gender', state.gender),
-      createData('Address', state.address),
-      createData('Post Index', state.postIndex),
-      createData('Credit Card', state.creditCard),
+      createData('Nickname', data.nickname),
+      createData('Email', data.email),
+      createData('Telephone', data.tel),
+      createData('Full Name', data.fullName),
+      createData('Gender', data.gender),
+      createData('Address', data.address),
+      createData('Post Index', data.postIndex),
+      createData('Credit Card', data.creditCard),
     ];
 
 
@@ -47,7 +45,11 @@ const CheckScreen = () => {
                 ))}
               </TableBody>
             </Table>
-            <Navigation />
+            <Navigation 
+              decrementFormProgress={decrementFormProgress} 
+              formProgress={formProgress}
+              applyForm={applyForm}
+            />
           </CheckScreenStyled>
         </Fragment>
     )
