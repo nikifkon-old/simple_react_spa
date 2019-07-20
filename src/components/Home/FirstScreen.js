@@ -13,6 +13,7 @@ import EmailDialog from './Dialog'
 const FirstScreenContainer = styled(Grid)`
     background: ${primary}
     min-height: 100vh
+    overflow: hidden
 `
 const EmailForm = styled.form`
     position: relative
